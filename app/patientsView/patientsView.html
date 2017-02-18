@@ -1,3 +1,15 @@
-<p>This is the partial for view 1.</p>
-<h1> {{test}} </h1>
-<md-button>test</md-button>
+<h1>
+    {{doctor.name}}, MD <br>
+    {{doctor.practice}}
+</h1>
+
+<md-button href="#!/addPatientView">
+    Add New Patient
+</md-button>
+
+<md-list>
+    <md-list-item ng-repeat="patient in patients">
+        <p>{{patient.name}}</p>
+        <p>{{patient.dob}}</p>
+    </md-list-item>
+</md-list>
