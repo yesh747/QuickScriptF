@@ -4,7 +4,7 @@ angular.module('myApp.addPatientView', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/addPatientView', {
-    templateUrl: 'addPatientView/loginDoctor.html',
+    templateUrl: 'addPatientView/addPatientView.html',
     controller: 'AddPatientViewCtrl'
   });
 }])
