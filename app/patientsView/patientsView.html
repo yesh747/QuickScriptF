@@ -5,14 +5,19 @@
             <h1 style="">Dr. {{doctor.name}}</h1> <br>
             <h3 style="">{{doctor.practice}}</h3>
         </div>
-        <md-button href="#!/addPatientView" class="md-primary md-raised" style="color: #ffffff; margin: auto 0;">
+        <md-button href="#!/addPatientView" class="md-primary md-raised" style="color: #ffffff; margin: auto 0;" ng-hide="drugs">
             Add New Patient
+        </md-button>
+        <md-button href="#!/addPrescriptionView" class="md-primary md-raised" style="color: #ffffff; margin: auto 0;" ng-show="drugs">
+            Add New Prescription
         </md-button>
     </div>
 
     <div class="spacer" style="padding: 15px;">
         <md-button ng-show="drugs" ng-click="goBackToPatientList()">Go Back To Pt List</md-button>
     </div>
+
+    <label>Search: <input ng-model="searchText"></label>
 
     <div class="patients-list" ng-hide="drugs">
         <md-subheader> My Patients </md-subheader>
@@ -23,7 +28,7 @@
                 <p>Address</p>
                 <p>SSN</p>
             </md-list-item>
-            <md-list-item ng-repeat="patient in patients" ng-click="goToPtDrugList($index)">
+            <md-list-item ng-repeat="patient in patients | filter:searchText" ng-click="goToPtDrugList($index)">
                 <p>{{patient.name}}</p>
                 <p>{{patient.address}}</p>
                 <p>{{patient.dob}}</p>
