@@ -1,15 +1,15 @@
 <div layout-gt-sm="column" style="max-width: 500px; margin: 0 auto 0;">
   <!-- Title Section -->
   <span style="display: block; margin: 0 auto 15px;"><i class="fa fa-medkit" style="color: rgb(3, 169, 244); font-size: 72px;"></i></span>
-  <h1 style="margin: 0 auto 25px;">Enter {{patient}}'s new prescription</h1>
+  <h1 style="margin: 0 auto 25px; text-align:center;">Enter {{clickedPatient.name}}'s new prescription</h1>
 
   <!-- Form -->
   <md-input-container>
    <label>Drug</label>
    <md-select ng-model="prescription.name">
      <md-option><em>None</em></md-option>
-     <md-option ng-repeat="drug in drugList" ng-value="drug.name">
-       {{drug.name}}
+     <md-option ng-repeat="prescription in drugList" ng-value="prescription.name">
+       {{prescription.name}}
      </md-option>
    </md-select>
   </md-input-container>
@@ -18,22 +18,46 @@
     <input ng-model="prescription.dosage">
   </md-input-container>
   <md-input-container>
-    <label>Schedule</label>
+    <label>Take meds every {{prescription.schedule}} day(s)</label>
     <md-select ng-model="prescription.schedule">
       <md-option><em>None</em></md-option>
-      <md-option ng-repeat="sched in schedules" ng-value="sched.schedule">
-        {{sched.schedule}}
+      <md-option ng-repeat="prescription in schedules" ng-value="prescription.schedule">
+        {{prescription.schedule}}
       </md-option>
     </md-select>
   </md-input-container>
   <md-input-container class="md-block" flex-gt-sm>
     <label>How many times each day?</label>
-    <input ng-model="prescription.schedule">
+    <input ng-model="prescription.number">
+  </md-input-container>
+  <md-input-container>
+    <label>At what time?</label>
+    <md-select ng-model="prescription.time">
+      <md-option><em>None</em></md-option>
+      <md-option ng-repeat="prescription in times" ng-value="prescription.time">
+        {{prescription.time}}
+      </md-option>
+    </md-select>
+  </md-input-container>
+  <md-input-container class="md-block" flex-gt-sm>
+    <label>How long should the prescription last?</label>
+    <input ng-model="prescription.numDays">
   </md-input-container>
   <md-input-container class="md-block">
      <label>Notes</label>
      <textarea ng-model="prescription.notes" md-maxlength="150" rows="5" md-select-on-focus></textarea>
    </md-input-container>
-  <md-button class="md-primary md-raised" style="color:white; margin-bottom: 25px;">Submit</md-button>
+    </md-select>
+  </md-input-container>
+  <!-- <md-input-container>
+   <label>Pharmacy</label>
+   <md-select ng-model="prescription.pharmacy">
+     <md-option><em>None</em></md-option>
+     <md-option ng-repeat="prescription in pharmList" ng-value="prescription.pharmacy">
+       {{prescription.pharmacy}}
+     </md-option>
+   </md-select>
+ </md-input-container> -->
+   <md-button ng-click="submitForm()" class="md-primary md-raised" style="color:white; margin-bottom: 25px;">Submit</md-button>
 
 </div>

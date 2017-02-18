@@ -6,6 +6,7 @@ angular.module('myApp', [
   'myApp.patientsView',
   'myApp.addPatientView',
   'myApp.addPrescriptionView',
+  'myApp.pharmacyView',
   'myApp.loginDoctor',
   'myApp.version',
   'ngMaterial',

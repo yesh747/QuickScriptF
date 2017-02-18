@@ -1,0 +1,60 @@
+<div class="pharmacy">
+    <div flex class="pharmacy-information" layout="row">
+        <div style="padding-right:30px"><i class="fa fa-medkit" style="color: rgb(3, 169, 244); font-size: 72px;"></i></div>
+        <div flex layout="column">
+            <h1 style="">{{ pharmacy.name }}</h1>
+        </div>
+    </div>
+
+    <div class="spacer" style="padding: 15px;">
+        <md-button class="md-primary md-raised" style="color: #ffffff;" ng-show="drugs" ng-click="goBackToPatientList()">Go Back To Pt List</md-button>
+    </div>
+
+
+    <div class="patients-list" ng-hide="drugs">
+        <md-subheader flex layout="row" style="">
+            Prescriptions
+        </md-subheader>
+        <md-list>
+            <md-list-item style="background-color: #efefef;">
+                <p>Patient</p>
+                <p>Drug</p>
+                <p>Prescribing Doctor</p>
+                <p>Date Prescribed</p>
+                <p>Date Filled</p>
+            </md-list-item>
+            <md-list-item ng-repeat="p in prescriptions" ng-click="goToPtDrugList($index)">
+                <p>{{p.patient}}</p>
+                <p>{{p.drug}}</p>
+                <p>{{p.doctor}}</p>
+                <p>{{p.datePrescribed}}</p>
+                <!-- <p ng-hide="p.dateFilled"><md-button style="color: white;" class="md-raised md-primary">Not Filled</md-button></p> -->
+                <p ng-hide="p.dateFilled"><a class="md-warn">Not Filled</a></p>
+                <p ng-show="p.dateFilled">{{p.dateFilled}}</p>
+            </md-list-item>
+        </md-list>
+    </div>
+
+    <div class="drugs-list" ng-show="drugs">
+        <md-subheader> {{selectedPatient}}'s Prescriptions </md-subheader>
+        <md-list>
+            <md-list-item style="background-color: #efefef;">
+                <p>Medication Name</p>
+                <p>Dosage</p>
+                <p>Schedule</p>
+                <p>Times per day</p>
+                <p>Notes</p>
+            </md-list-item>
+            <md-list-item ng-repeat="drug in drugs" ng-click="null">
+                <p>{{drug.name}}</p>
+                <p>{{drug.dose}}</p>
+                <p>{{drug.schedule}}</p>
+                <p>{{drug.timing}}</p>
+                <p>{{drug.notes}}</p>
+            </md-list-item>
+        </md-list>
+    </div>
+
+
+
+</div>
