@@ -9,7 +9,7 @@ angular.module('myApp.loginDoctor', ['ngRoute'])
   });
 }])
 
-.controller('LoginDoctorCtrl', ['$scope','$window','$rootScope', function($scope, $window, $rootScope) {
+.controller('LoginDoctorCtrl', ['$scope','$window','$rootScope','$http','SERVER_HOST', function($scope, $window, $rootScope, $http, SERVER_HOST) {
 
   $scope.doctor = {
     email: '',
@@ -19,7 +19,19 @@ angular.module('myApp.loginDoctor', ['ngRoute'])
  $scope.login = function(){
 
  // Make request to server, and if doctor exists, return his info and login
-   $window.location.href = "#!/patientsView";
+
+   $http.post(SERVER_HOST+'login', $scope.doctor).then(function (res) {
+     console.log(res);
+     $window.location.href = "#!/patientsView";
+   }, function (res) {
+     console.log(res);
+     console.log('error');
+   });
+
+
+   $rootScope.doctorInformation = {
+     name: 'Chris Turk'
+   }
 
    $rootScope.doctorPatientInformation = [
      {name: 'patient 1', dob: 'dob1', address: 'address1', ssn: '1111', drugs: [{name: 'drug1', dose: 'dose1'}, {name: 'drug2', dose:'dose2'}]},
