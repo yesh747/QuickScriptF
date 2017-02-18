@@ -1,5 +1,9 @@
 /* app css stylesheet */
 
+* {
+  font-family: "Roboto";
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -7,19 +11,30 @@
   padding: 0 0 0.5em;
 }
 
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
 .menu > li {
   display: inline;
 }
 
 .menu > li + li:before {
-  content: "|";
   padding-right: 0.3em;
+}
+
+.view {
+  margin: 40px;
+}
+
+.title {
+  background-color: #03a9f4;
+  color: #ffffff;
+}
+
+  .title h1{
+    text-align: center;
+    font-weight: 300;
+    margin: 0;
+    padding: 20px 0 0 0;
+  }
+
+.patients .doctor-information * {
+  display: inline;
 }

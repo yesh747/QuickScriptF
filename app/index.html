@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Quickscript</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
@@ -14,18 +14,26 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+  <div class="title">
+    <h1>Quick<span style="font-weight: 500">script</span></h1>
+    <h3 class="subheader" style="text-align: center; font-weight: 400; margin: 0; padding: 10px 0;"
+    >Prescriptions made simple, quick, and reliable</h3>
+  </div>
   <ul class="menu">
+    <li><a href="#!/loginDoctor">Doctor Login</a></li>
     <li><a href="#!/patientsView">Patients View</a></li>
     <li><a href="#!/addPatientView">Add Patient</a></li>
+    <li><a href="#!/addPrescriptionView">Add Prescription</a></li>
   </ul>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+  <div class="view" ng-view></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -40,6 +48,8 @@
   <script src="app.js"></script>
   <script src="patientsView/patientsView.js"></script>
   <script src="addPatientView/addPatientView.js"></script>
+  <script src="addPrescriptionView/addPrescriptionView.js"></script>
+  <script src="loginDoctor/loginDoctor.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
