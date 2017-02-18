@@ -28,7 +28,8 @@
                 <p>{{p.drug}}</p>
                 <p>{{p.doctor}}</p>
                 <p>{{p.datePrescribed}}</p>
-                <p ng-hide="p.dateFilled"><md-button style="color: white;" class="md-raised md-primary">Fill</md-button></p>
+                <!-- <p ng-hide="p.dateFilled"><md-button style="color: white;" class="md-raised md-primary">Not Filled</md-button></p> -->
+                <p ng-hide="p.dateFilled"><a class="md-warn">Not Filled</a></p>
                 <p ng-show="p.dateFilled">{{p.dateFilled}}</p>
             </md-list-item>
         </md-list>

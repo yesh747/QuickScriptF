@@ -10,7 +10,7 @@ angular.module('myApp.addPatientView', ['ngRoute'])
 }])
 
 
-.controller('AddPatientViewCtrl', ['$scope', '$rootScope','SERVER_HOST', function($scope, $rootScope, SERVER_HOST) {
+.controller('AddPatientViewCtrl', ['$scope', '$rootScope','SERVER_HOST', '$location', function($scope, $rootScope, SERVER_HOST, $location) {
 
   // Initialize $scope.data
   $scope.data = {};
@@ -37,7 +37,7 @@ angular.module('myApp.addPatientView', ['ngRoute'])
 
     // Get patient data
     $rootScope.newPatient = {
-      name: $scope.patient.firstName + $scope.patient.lastName,
+      name: $scope.patient.firstName + " " + $scope.patient.lastName,
       address: $scope.patient.address,
       email: $scope.patient.email,
       phone: $scope.patient.phone,

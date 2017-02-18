@@ -3,16 +3,17 @@
 angular.module('myApp.addPrescriptionView', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/addPrescriptionView', {
-    templateUrl: 'addPrescriptionView/addPrescriptionView.html',
-    controller: 'AddPrescriptionViewCtrl'
-  });
+    $routeProvider.when('/addPrescriptionView', {
+      templateUrl: 'addPrescriptionView/addPrescriptionView.html',
+      controller: 'AddPrescriptionViewCtrl'
+    });
 }])
 
-.controller('AddPrescriptionViewCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+.controller('AddPrescriptionViewCtrl', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
 
-  $rootScope.clickedPatient = {};
-  $rootScope.clickedPatient.name = "John"; // temporary holder
+  // Go back if no patient selected
+  if ($rootScope.clickedPatient == null) $location.path('/patientsView');
+
   $rootScope.doctorInformation = {};
   $rootScope.doctorInformation.name = "Dr. No";
 
@@ -54,7 +55,6 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
     $scope.newPrescription = {
       patient: $rootScope.clickedPatient.name,
       doctor: $rootScope.doctorInformation.name,
-      pharmacy: $scope.prescription.pharmacy,
       drug: $scope.prescription.name,
       dosage: $scope.prescription.dosage,
       dosagePeriod: $scope.prescription.schedule,
@@ -63,6 +63,7 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
       numDays: $scope.prescription.numDays,
       refillDate: $scope.refillDate(),
       datePrescribed: $scope.today(),
+      pharmacyFilled: null,
       dateFilled: null,
     }
   }
