@@ -9,8 +9,18 @@ angular.module('myApp.patientsView', ['ngRoute'])
   });
 }])
 
-.controller('PatientsViewCtrl', ['$scope', function($scope) {
+.controller('PatientsViewCtrl', ['$scope', '$window', function($scope, $window) {
 
-  $scope.test = 'test works';
+
+  $scope.doctor = {
+    name: 'Chris Turk',
+    practice: 'Sacred Heart Hospital'
+  }
+
+  $scope.patients = [
+    {name: 'patient 1', dob: 'dob1'},
+    {name: 'patient 2', dob: 'dob2'},
+    {name: 'patient 3', dob: 'dob3'}
+  ]
 
 }]);

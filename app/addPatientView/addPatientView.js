@@ -11,4 +11,5 @@ angular.module('myApp.addPatientView', ['ngRoute'])
 
 .controller('AddPatientViewCtrl', ['$scope', function($scope) {
 
+
 }]);
