@@ -14,12 +14,13 @@ angular.module('myApp', [
 ]).
 config(['$locationProvider', '$routeProvider', '$mdThemingProvider', function($locationProvider, $routeProvider, $mdThemingProvider) {
   $locationProvider.hashPrefix('!');
-  $routeProvider.otherwise({redirectTo: '/patientsView'});
+  $routeProvider.otherwise({redirectTo: '/login'});
   $mdThemingProvider.theme('default')
     .primaryPalette('light-blue')
     .accentPalette('blue-grey');
 }])
     // .constant('SERVER_HOST','https://dreamrun.herokuapp.com/')
+    // .constant('SERVER_HOST','http://10.189.24.35:5000/');
     .constant('SERVER_HOST','http://127.0.0.1:5000/');
     // .constant('SERVER_HOST','http://localhost:5000/');
 

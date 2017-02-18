@@ -11,10 +11,9 @@ angular.module('myApp.patientsView', ['ngRoute'])
 
 .controller('PatientsViewCtrl', ['$scope', '$window', '$rootScope', function($scope, $window, $rootScope) {
 
-  $scope.doctor = {
-    name: 'Chris Turk',
-    practice: 'Sacred Heart Hospital'
-  }
+  $scope.doctor = $rootScope.doctorInformation;
+  console.log($scope.doctor);
+  console.log($rootScope.doctorInformation);
 
   // $scope.patients = [
   //   {name: 'patient 1', dob: 'dob1', address: 'address1', ssn: '1111', drugs: [{name: 'drug1', dose: 'dose1'}, {name: 'drug2', dose:'dose2'}]},
@@ -26,18 +25,26 @@ angular.module('myApp.patientsView', ['ngRoute'])
 
   $scope.patients = $rootScope.doctorPatientInformation;
 
+
   $scope.drugs;
   $scope.selectedPatient;
 
   $scope.goToPtDrugList = function(position) {
+    console.log('Patients: ' + JSON.stringify($scope.patients));
+
     //Create an array of selected patient's drugs
-    $scope.selectedPatient = $scope.patients[position].name;
-    $scope.drugs = $scope.patients[position].drugs;
+    console.log('Entered Call Go To Pt Drug List. Position: ' + position);
+    $scope.selectedPatientName = $scope.patients[position].name;
+    console.log('Selected Patient: ' + $scope.selectedPatientName);
+
+    $scope.drugs = $scope.patients[position].prescriptions;
+    console.log('Patient Drugs: ' + $scope.drugs);
+
   }
 
   $scope.goBackToPatientList = function(){
     $scope.drugs = null;
-    $scope.selectedPatient = null;
+    $scope.selectedPatientName = null;
   }
 
 }]);

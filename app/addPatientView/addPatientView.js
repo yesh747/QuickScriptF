@@ -9,7 +9,7 @@ angular.module('myApp.addPatientView', ['ngRoute'])
   });
 }])
 
-.controller('AddPatientViewCtrl', ['$scope', '$rootScope','SERVER_HOST', function($scope, $rootScope, SERVER_HOST) {
+.controller('AddPatientViewCtrl', ['$scope', '$rootScope','SERVER_HOST', '$http', function($scope, $rootScope, $http, SERVER_HOST) {
 
   // Initialize $scope.data
   $scope.data = {};
@@ -34,6 +34,8 @@ angular.module('myApp.addPatientView', ['ngRoute'])
   // // Form Handler
   $scope.submitForm = function() {
 
+
+
     $rootScope.newPatient = {
       name: $scope.patient.firstName + $scope.patient.lastName,
       address: $scope.patient.address,
@@ -42,4 +44,5 @@ angular.module('myApp.addPatientView', ['ngRoute'])
     }
 
   }
+
 }]);

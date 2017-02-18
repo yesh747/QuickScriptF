@@ -46,14 +46,14 @@
                 <p>Dosage</p>
                 <p>Schedule</p>
                 <p>Times per day</p>
-                <p>Notes</p>
+                <p>Date Prescribed</p>
             </md-list-item>
             <md-list-item ng-repeat="drug in drugs" ng-click="null">
-                <p>{{drug.name}}</p>
-                <p>{{drug.dose}}</p>
-                <p>{{drug.schedule}}</p>
-                <p>{{drug.timing}}</p>
-                <p>{{drug.notes}}</p>
+                <p>{{drug.drugName}}</p>
+                <p>{{drug.dosage}}</p>
+                <p>Every {{drug.dosagePeriod}} days</p>
+                <p>{{drug.dosageNumber}} times per day</p>
+                <p>{{drug.datePrescribed}}</p>
             </md-list-item>
         </md-list>
     </div>
