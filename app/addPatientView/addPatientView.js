@@ -11,7 +11,7 @@ angular.module('myApp.addPatientView', ['ngRoute'])
 
 
 
-.controller('AddPatientViewCtrl', ['$scope', '$rootScope','SERVER_HOST', '$http', '$location', function($scope, $rootScope, $http, SERVER_HOST, $location) {
+.controller('AddPatientViewCtrl', ['$scope', '$rootScope','$http', 'SERVER_HOST', '$location', function($scope, $rootScope, $http, SERVER_HOST, $location) {
 
   // Initialize $scope.data
   $scope.data = {};
@@ -43,22 +43,36 @@ angular.module('myApp.addPatientView', ['ngRoute'])
       email: $scope.patient.email,
       phone: $scope.patient.phone,
       ssn: $scope.patient.ssn,
-      doB: $scope.patient.birthDate
+      doB: $scope.patient.birthDate.toUTCString()
     }
+
+    console.log('New Patient: ' + JSON.stringify($rootScope.newPatient));
 
     // + Add new patient to database
-
-    // Choose route
-    if ($scope.data.cb1 == true) {
-      $rootScope.clickedPatient = $rootScope.newPatient;
-      $rootScope.newPatient = null;
-      $location.path('/addPrescriptionView');
-    }
-    else {
-      // + Add new patient to database
-      $rootScope.newPatient = null;
-      $location.path('/patientView');
-    }
+    $http.post(SERVER_HOST + 'addPatientView', {
+      doctor: $rootScope.doctorInformation.name,
+      name: $rootScope.newPatient.name,
+      phoneNumber: $rootScope.newPatient.phone,
+      email: $rootScope.newPatient.email,
+      dob: $rootScope.newPatient.doB,
+      address: $rootScope.newPatient.address,
+      ssn: $rootScope.newPatient.ssn
+    }).then(function (res) {
+      console.log(res);
+      // Choose route
+      if ($scope.data.cb1 == true) {
+        $rootScope.clickedPatient = $rootScope.newPatient;
+        $rootScope.newPatient = null;
+        $location.path('/addPrescriptionView');
+      } else {
+        $rootScope.newPatient = null;
+        $location.path('/patientView');
+      }
+    }, function (res) {
+      console.log(res);
+      console.log('error');
+    })
   }
+
 
 }]);
