@@ -9,7 +9,7 @@ angular.module('myApp.addPatientView', ['ngRoute'])
   });
 }])
 
-.controller('AddPatientViewCtrl', ['$scope', function($scope) {
+.controller('AddPatientViewCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
 
   // Initialize $scope.data
   $scope.data = {};
@@ -33,6 +33,13 @@ angular.module('myApp.addPatientView', ['ngRoute'])
 
   // // Form Handler
   $scope.submitForm = function() {
-    console.log($scope.patient.firstName); // Proof of concept
+
+    $rootScope.newPatient = {
+      name: $scope.patient.firstName + $scope.patient.lastName,
+      address: $scope.patient.address,
+      ssn: $scope.patient.ssn,
+      doB: $scope.patient.birthDate
+    }
+
   }
 }]);

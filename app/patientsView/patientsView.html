@@ -14,13 +14,14 @@
     </div>
 
     <div class="spacer" style="padding: 15px;">
-        <md-button ng-show="drugs" ng-click="goBackToPatientList()">Go Back To Pt List</md-button>
+        <md-button class="md-primary md-raised" style="color: #ffffff;" ng-show="drugs" ng-click="goBackToPatientList()">Go Back To Pt List</md-button>
     </div>
 
-    <label>Search: <input ng-model="searchText"></label>
 
     <div class="patients-list" ng-hide="drugs">
-        <md-subheader> My Patients </md-subheader>
+        <md-subheader flex layout="row" style="">
+            My Patients
+        </md-subheader>
         <md-list>
             <md-list-item style="background-color: #efefef;">
                 <p>Name</p>
@@ -28,10 +29,10 @@
                 <p>Address</p>
                 <p>SSN</p>
             </md-list-item>
-            <md-list-item ng-repeat="patient in patients | filter:searchText" ng-click="goToPtDrugList($index)">
+            <md-list-item ng-repeat="patient in patients | filter:searchPatients" ng-click="goToPtDrugList($index)">
                 <p>{{patient.name}}</p>
-                <p>{{patient.address}}</p>
                 <p>{{patient.dob}}</p>
+                <p>{{patient.address}}</p>
                 <p>{{patient.ssn}}</p>
             </md-list-item>
         </md-list>
