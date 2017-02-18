@@ -22,5 +22,4 @@ angular.module('myApp.patientsView', ['ngRoute'])
     {name: 'patient 2', dob: 'dob2'},
     {name: 'patient 3', dob: 'dob3'}
   ]
-
 }]);
