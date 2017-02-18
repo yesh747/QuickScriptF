@@ -4,7 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.patientsView',
-  'myApp.view2',
+  'myApp.addPatientView',
   'myApp.version',
   'ngMaterial',
   'ngAria',
