@@ -9,7 +9,7 @@ angular.module('myApp.addPatientView', ['ngRoute'])
   });
 }])
 
-.controller('AddPatientViewCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+.controller('AddPatientViewCtrl', ['$scope', '$rootScope','SERVER_HOST', function($scope, $rootScope, SERVER_HOST) {
 
   // Initialize $scope.data
   $scope.data = {};
