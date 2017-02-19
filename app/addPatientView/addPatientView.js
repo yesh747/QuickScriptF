@@ -51,15 +51,25 @@ angular.module('myApp.addPatientView', ['ngRoute'])
 
     $http.post(SERVER_HOST+'addPatientView', $rootScope.newPatient).
     then(function (res) {
-      // Choose route
-      if ($scope.data.cb1 == true) {
-        $rootScope.clickedPatient = $rootScope.newPatient;
-        $rootScope.newPatient = null;
-        $location.path('/addPrescriptionView');
-      } else {
-        $rootScope.newPatient = null;
-        $location.path('/patientsView');
-      }
+      // Get new patient data
+      $http.post(SERVER_HOST+'getPatients', $rootScope.doctorInformation.id).
+      then(function (res) {
+        console.log(res);
+        $rootScope.doctorPatientInformation = res.data.patients;
+        console.log($rootScope.doctorPatientInformation);
+        // Choose route
+        if ($scope.data.cb1 == true) {
+          $rootScope.clickedPatient = $rootScope.newPatient;
+          $rootScope.newPatient = null;
+          $location.path('/addPrescriptionView');
+        } else {
+          $rootScope.newPatient = null;
+          $location.path('/patientsView');
+        }
+      }, function(res) {
+        console.log(res);
+        console.log('error');
+      });
     }, function (res) {
       console.log(res);
       console.log('error');

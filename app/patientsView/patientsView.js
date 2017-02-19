@@ -31,6 +31,7 @@ angular.module('myApp.patientsView', ['ngRoute'])
 
   }
 
+
   $scope.goBackToPatientList = function(){
     $scope.drugs = null;
     $scope.selectedPatientName = null;
