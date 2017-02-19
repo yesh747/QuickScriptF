@@ -32,6 +32,7 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
 
     $http.post(SERVER_HOST+'addPrescriptionView', $scope.newPrescription).
     then(function (res) {
+      console.log(res);
       if (res.data == "Prescription added") {
         $window.location.href = "#!/patientsView";
       } else {
@@ -46,7 +47,7 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
   // if ($rootScope.clickedPatient == null) $location.path('/patientsView');
 
   // Get drugs, schedules, and times for form selectors
-  $scope.drugList = ('Xanax Adderall Acetomenphan Belozik Frumuti Sedunkil').split(' ').map(function (drug) { return { name: drug }; });
+  $scope.drugList = ('Xanax Nexium Viagra OxyContin Miralax Vicodin Adderall Vyvanse Cialis').split(' ').map(function (drug) { return { name: drug }; });
   $scope.schedules = ['1', '2', '3', '4', '5', '6', '7'].map(function (sched) { return { schedule: sched }; });
    var times = ['Morning', 'Noon', 'Evening', 'Morning Noon', 'Noon Evening', 'Morning Evening', 'Morning Noon Evening'];
   // if ($scope.prescription.number > 1) $scope.times.push('Morning Noon', 'Noon Evening', 'Morning Evening');

@@ -43,7 +43,7 @@ angular.module('myApp.patientsView', ['ngRoute'])
     $http.post(SERVER_HOST + 'sms', {id: $scope.selectedPatientId})
         .then( function(res) {
           console.log('works: ' + JSON.stringify(res))
-          $windows.alert("Your text was sent to " + $scope.selectedPatientName  +".")
+          $window.alert("Your text was sent to " + $scope.selectedPatientName  +".")
           },
           function(res){
             console.log('error: ' + res);
