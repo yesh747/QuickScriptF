@@ -14,14 +14,34 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
   <div class="title">
+    <!-- <md-menu>
+      <md-menu-content width="6">
+        <md-menu-item ng-repeat="item in [1, 2, 3]">
+          <md-button ng-click="ctrl.announceClick($index)">
+            <md-icon md-menu-align-target></md-icon>
+            Option {{item}} <i class="material-icons">face</i>
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+          <md-button ng-click="ctrl.toggleNotifications()">
+            <md-icon md-svg-icon="social:notifications-{{ctrl.notificationsEnabled ? 'off' : 'on'}}"></md-icon>
+            {{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }} notifications
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu> -->
     <h1>Quick<span style="font-weight: 500">script</span></h1>
-    <h3 class="subheader" style="text-align: center; font-weight: 400; margin: 0; padding: 10px 0;"
-    >Prescriptions made simple, quick, and reliable</h3>
+    <h3 class="subheader" style="text-align: center; font-weight: 400; margin: 0; padding: 10px 0;">
+      Prescriptions made simple, quick, and reliable
+    </h3>
   </div>
   <ul class="menu">
     <li><a href="#!/signUpDoctor">Doctor Sign Up</a></li>

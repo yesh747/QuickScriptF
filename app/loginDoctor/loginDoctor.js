@@ -30,7 +30,8 @@ angular.module('myApp.loginDoctor', ['ngRoute'])
          email: res.data.doctor.email,
          dob: res.data.doctor.dob,
          address: res.data.doctor.address,
-         practiceName: res.data.doctor.practiceName
+         practiceName: res.data.doctor.practiceName,
+         id: res.data.doctor.id,
        };
        $rootScope.doctorPatientInformation = res.data.patients;
 
