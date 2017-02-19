@@ -29,7 +29,7 @@
                 <p>Address</p>
                 <p>SSN</p>
             </md-list-item>
-            <md-list-item ng-repeat="patient in patients | filter:searchPatients" ng-click="goToPtDrugList($index)">
+            <md-list-item ng-repeat="patient in doctorPatientInformation | filter:searchPatients" ng-click="goToPtDrugList($index)">
                 <p>{{patient.name}}</p>
                 <p>{{patient.dob}}</p>
                 <p>{{patient.address}}</p>
