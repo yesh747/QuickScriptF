@@ -1,0 +1,46 @@
+<div layout-gt-sm="column" style="max-width: 500px; margin: 0 auto 0;">
+  <!-- Title Section -->
+  <span style="text-align:center; display: block; margin: 0 auto 15px;"><i class="fa fa-plus" style="color: rgb(3, 169, 244); font-size: 72px;"></i></span>
+  <h1 style="margin: 0 auto 25px; text-align: center;">Sign Up for QuickScripts</h1>
+
+    <!-- Form -->
+  <div class="login">
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>First name</label>
+      <input ng-model="doctor.firstName">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Last name</label>
+      <input ng-model="doctor.lastName">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Practice Name</label>
+      <input ng-model="doctor.practiceName">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Area of Practice</label>
+      <input ng-model="doctor.specialty">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Email</label>
+      <input ng-model="doctor.email" type="email">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Address</label>
+      <input ng-model="doctor.address">
+    </md-input-container>
+    <md-input-container  class="md-block" flex="50">
+      <md-datepicker ng-model="doctor.dob" md-current-view="year" md-placeholder="Date of Birth"></md-datepicker>
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Password</label>
+      <input ng-model="doctor.password" type="password">
+    </md-input-container>
+    <md-button ng-click="signUp()"
+               class="md-primary md-raised"
+               style="color:white;
+               transform: translate(-50%, 0); position: relative; left: 50%; margin: 0;">
+      Sign Up
+    </md-button>
+  </div>
+</div>

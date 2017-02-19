@@ -9,8 +9,22 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
     });
 }])
 
-.controller('AddPrescriptionViewCtrl', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
+.controller('AddPrescriptionViewCtrl', ['$scope', '$rootScope', '$location','$http','SERVER_HOST', function($scope, $rootScope, $location, $http, SERVER_HOST) {
 
+  $scope.addPrescription = function() {
+    $scope.newPrescription = $scope.submitForm();
+    $http.post(SERVER_HOST+'addPrescriptionView', $scope.newPrescription).
+    then(function (res) {
+      if (res == "Prescription added") {
+        $window.location.href = "#!/addPrescriptionView";
+      } else {
+         $scope.error = "Sorry, try again.";
+      }
+    }, function (res) {
+      console.log(res);
+      console.log('error');
+    });
+  }
   // Go back if no patient selected
   // if ($rootScope.clickedPatient == null) $location.path('/patientsView');
 
@@ -40,16 +54,6 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
       return today;
     }
 
-    $scope.refillDate = function() {
-      var date = new Date();
-      date.setDate(data.getDate() + $scope.numDays);
-      var dd = someDate.getDate();
-      var mm = someDate.getMonth() + 1;
-      var y = someDate.getFullYear();
-      var refillDate = dd + '/'+ mm + '/'+ y;
-      return refillDate;
-    }
-
     // Set values
     $scope.newPrescription = {
       patient: $rootScope.clickedPatient.name,
@@ -58,11 +62,11 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
       dosage: $scope.prescription.dosage,
       dosagePeriod: $scope.prescription.schedule,
       dosageNumber: $scope.prescription.number,
+      totalNumDoses: $scope.prescription.totalNumDoses,
       timeOfDay: $scope.prescription.time,
       numDays: $scope.prescription.numDays,
-      refillDate: $scope.refillDate(),
       datePrescribed: $scope.today(),
-      pharmacyFilled: null,
+      pharmacyFilled: false,
       dateFilled: null,
     }
   }

@@ -43,6 +43,10 @@
     <label>How long should the prescription last?</label>
     <input ng-model="prescription.numDays">
   </md-input-container>
+  <md-input-container class="md-block" flex-gt-sm>
+    <label>Total Number of Doses</label>
+    <input ng-model="prescription.totalNumDoses">
+  </md-input-container>
   <md-input-container class="md-block">
      <label>Notes</label>
      <textarea ng-model="prescription.notes" md-maxlength="150" rows="5" md-select-on-focus></textarea>

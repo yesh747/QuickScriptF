@@ -1,50 +1,39 @@
 'use strict';
 
-angular.module('myApp.loginDoctor', ['ngRoute'])
+angular.module('myApp.signUpDoctor', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/loginDoctor', {
-    templateUrl: 'loginDoctor/loginDoctor.html',
-    controller: 'LoginDoctorCtrl'
+  $routeProvider.when('/signUpDoctor', {
+    templateUrl: 'signUpDoctor/signUpDoctor.html',
+    controller: 'SignUpDoctorCtrl'
   });
 }])
 
-.controller('LoginDoctorCtrl', ['$scope','$window','$rootScope','$http','SERVER_HOST', function($scope, $window, $rootScope, $http, SERVER_HOST) {
+.controller('SignUpDoctorCtrl', ['$scope','$window','$rootScope','$http','SERVER_HOST', function($scope, $window, $rootScope, $http, SERVER_HOST) {
 
- $scope.login = function(){
+ $scope.signUp = function(){
 
   // Get doctor info from form
-  $scope.doctor = {
+  $scope.newDoctor = {
+   name: $scope.doctor.firstName + " " + $scope.doctor.lastName,
    email: $scope.doctor.email,
-   password: $scope.doctor.password
+   dob: $scope.doctor.dob.toString(),
+   address: $scope.doctor.address,
+   practiceName: $scope.doctor.practiceName,
+   specialty: $scope.doctor.specialty,
+   password: $scope.doctor.password,
   }
 
   // Make request to server, and if doctor exists, return his info and login
   // $http.post(SERVER_HOST+'loginDoctor', {email: 'a@b.com', password: 'ab'}).
-   $http.post(SERVER_HOST+'loginDoctor', $scope.doctor).
+   $http.post(SERVER_HOST+'addDoctorView', $scope.newDoctor).
    then(function (res) {
      console.log(res);
-     if(res.data.doctor.email) {
-       $rootScope.doctorInformation = {
-         name: res.data.doctor.name,
-         email: res.data.doctor.email,
-         dob: res.data.doctor.dob,
-         address: res.data.doctor.address,
-         practiceName: res.data.doctor.practiceName
-       };
-       $rootScope.doctorPatientInformation = res.data.patients;
-
-       $window.location.href = "#!/patientsView";
-
-       //console.log(res);
-
+     if (res.data == "Doctor added") {
+       $window.location.href = "#!/loginDoctor";
      } else {
-        $scope.error = "Wrong email or password.";
+        $scope.error = "Sorry, try again.";
      }
-
-     // TODO: Grab data and assignt to doctptinto
-     // TODO: fix issue fif wrong username/psswrd, it still logs in
-
    }, function (res) {
      console.log(res);
      console.log('error');

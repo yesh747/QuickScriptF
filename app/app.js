@@ -8,6 +8,7 @@ angular.module('myApp', [
   'myApp.addPrescriptionView',
   'myApp.pharmacyView',
   'myApp.loginDoctor',
+  'myApp.signUpDoctor',
   'myApp.version',
   'ngMaterial',
   'ngAria',
@@ -21,7 +22,6 @@ config(['$locationProvider', '$routeProvider', '$mdThemingProvider', function($l
     .accentPalette('blue-grey');
 }])
     // .constant('SERVER_HOST','https://dreamrun.herokuapp.com/')
-    // .constant('SERVER_HOST','http://10.189.24.35:5000/');
-    .constant('SERVER_HOST','http://127.0.0.1:5000/');
+    .constant('SERVER_HOST','http://10.189.24.35:5000/');
+    //.constant('SERVER_HOST','http://127.0.0.1:5000/');
     // .constant('SERVER_HOST','http://localhost:5000/');
-
