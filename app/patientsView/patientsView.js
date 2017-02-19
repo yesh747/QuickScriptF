@@ -12,18 +12,17 @@ angular.module('myApp.patientsView', ['ngRoute'])
 .controller('PatientsViewCtrl', ['$scope', '$window', '$rootScope', function($scope, $window, $rootScope) {
 
   $scope.doctor = $rootScope.doctorInformation;
-  console.log($scope.doctor);
-  console.log($rootScope.doctorInformation);
 
   $scope.drugs;
   $scope.selectedPatient;
 
   $scope.goToPtDrugList = function(position) {
-    console.log('Patients: ' + JSON.stringify($scope.patients));
+
+    $rootScope.clickedPatient = $rootScope.doctorPatientInformation[position];
 
     //Create an array of selected patient's drugs
-    console.log('Entered Call Go To Pt Drug List. Position: ' + position);
     $scope.selectedPatientName = $rootScope.doctorPatientInformation[position].name;
+    console.log($scope.selectedPatientName);
     console.log('Selected Patient: ' + $scope.selectedPatientName);
 
     $scope.drugs = $rootScope.doctorPatientInformation[position].prescriptions;
