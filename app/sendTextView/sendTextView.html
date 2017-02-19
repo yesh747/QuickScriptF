@@ -1,0 +1,23 @@
+<div layout-gt-sm="column" style="max-width: 500px; margin: 0 auto 0;">
+  <!-- Title Section -->
+  <span style="display: block; margin: 0 auto 15px;"><i class="fa fa-plus" style="color: rgb(3, 169, 244); font-size: 72px;"></i></span>
+  <h1 style="margin: 0 auto 25px;">Enter your new patient</h1>
+
+  <!-- Form -->
+  <md-input-container class="md-block" flex-gt-sm>
+    <label>To:</label>
+    <input ng-model="patient.firstName">
+  </md-input-container>
+  <md-input-container class="md-block" flex-gt-sm>
+    <label>Phone Number</label>
+    <input ng-model="patient.lastName">
+  </md-input-container>
+  <md-input-container class="md-block">
+     <label>Message</label>
+     <textarea ng-model="prescription.notes" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+   </md-input-container>
+  </div>
+  <md-checkbox ng-click="updateText()" ng-checked="data.cb1" aria-label="Need Prescription" class="md-primary" style="margin: 0 0 25px 15px;">Does this patient have or need a prescription?</md-checkbox>
+  <md-button ng-click="submitForm()" class="md-primary md-raised" style="color:white;">{{cb1Text}}</md-button>
+
+</div>

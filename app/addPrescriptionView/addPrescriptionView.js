@@ -9,10 +9,24 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
     });
 }])
 
-.controller('AddPrescriptionViewCtrl', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location) {
+.controller('AddPrescriptionViewCtrl', ['$scope', '$rootScope', '$location','$http','SERVER_HOST', function($scope, $rootScope, $location, $http, SERVER_HOST) {
 
+  $scope.addPrescription = function() {
+    $scope.newPrescription = $scope.submitForm();
+    $http.post(SERVER_HOST+'addPrescriptionView', $scope.newPrescription).
+    then(function (res) {
+      if (res == "Prescription added") {
+        $window.location.href = "#!/addPrescriptionView";
+      } else {
+         $scope.error = "Sorry, try again.";
+      }
+    }, function (res) {
+      console.log(res);
+      console.log('error');
+    });
+  }
   // Go back if no patient selected
-  if ($rootScope.clickedPatient == null) $location.path('/patientsView');
+  // if ($rootScope.clickedPatient == null) $location.path('/patientsView');
 
   $rootScope.doctorInformation = {};
   $rootScope.doctorInformation.name = "Dr. No";
@@ -20,9 +34,8 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
   // Get drugs, schedules, and times for form selectors
   $scope.drugList = ('Xanax Adderall Acetomenphan Belozik Frumuti Sedunkil').split(' ').map(function (drug) { return { name: drug }; });
   $scope.schedules = ['1', '2', '3', '4', '5', '6', '7'].map(function (sched) { return { schedule: sched }; });
-   var times = ['Morning', 'Noon', 'Evening'];
+   var times = ['Morning', 'Noon', 'Evening', 'Morning Noon', 'Noon Evening', 'Morning Evening', 'Morning Noon Evening'];
   // if ($scope.prescription.number > 1) $scope.times.push('Morning Noon', 'Noon Evening', 'Morning Evening');
-  times.push('Morning, Noon', 'Noon, Evening', 'Morning, Evening');
   $scope.times = times.map(function (t) { return { time: t }; });
   $scope.pharmList = ['CVS', 'Walgreens', 'Walmart'].map(function (p) { return { pharmacy: p }; });
 
@@ -41,16 +54,6 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
       return today;
     }
 
-    $scope.refillDate = function() {
-      var date = new Date();
-      date.setDate(data.getDate() + $scope.numDays);
-      var dd = someDate.getDate();
-      var mm = someDate.getMonth() + 1;
-      var y = someDate.getFullYear();
-      var refillDate = dd + '/'+ mm + '/'+ y;
-      return refillDate;
-    }
-
     // Set values
     $scope.newPrescription = {
       patient: $rootScope.clickedPatient.name,
@@ -59,11 +62,11 @@ angular.module('myApp.addPrescriptionView', ['ngRoute'])
       dosage: $scope.prescription.dosage,
       dosagePeriod: $scope.prescription.schedule,
       dosageNumber: $scope.prescription.number,
+      totalNumDoses: $scope.prescription.totalNumDoses,
       timeOfDay: $scope.prescription.time,
       numDays: $scope.prescription.numDays,
-      refillDate: $scope.refillDate(),
       datePrescribed: $scope.today(),
-      pharmacyFilled: null,
+      pharmacyFilled: false,
       dateFilled: null,
     }
   }

@@ -15,17 +15,6 @@ angular.module('myApp.patientsView', ['ngRoute'])
   console.log($scope.doctor);
   console.log($rootScope.doctorInformation);
 
-  // $scope.patients = [
-  //   {name: 'patient 1', dob: 'dob1', address: 'address1', ssn: '1111', drugs: [{name: 'drug1', dose: 'dose1'}, {name: 'drug2', dose:'dose2'}]},
-  //   {name: 'patient 2', dob: 'dob2', address: 'address2', ssn: '2222', drugs: [{name: 'drug3', dose: 'dose3'}, {name: 'drug4', dose:'dose4'}]},
-  //   {name: 'patient 3', dob: 'dob3', address: 'address2', ssn: '3333', drugs: [{name: 'drug5', dose: 'dose5'}, {name: 'drug6', dose:'dose6'}]}
-  // ]
-
-
-
-  $scope.patients = $rootScope.doctorPatientInformation;
-
-
   $scope.drugs;
   $scope.selectedPatient;
 
@@ -34,10 +23,10 @@ angular.module('myApp.patientsView', ['ngRoute'])
 
     //Create an array of selected patient's drugs
     console.log('Entered Call Go To Pt Drug List. Position: ' + position);
-    $scope.selectedPatientName = $scope.patients[position].name;
+    $scope.selectedPatientName = $rootScope.doctorPatientInformation[position].name;
     console.log('Selected Patient: ' + $scope.selectedPatientName);
 
-    $scope.drugs = $scope.patients[position].prescriptions;
+    $scope.drugs = $rootScope.doctorPatientInformation[position].prescriptions;
     console.log('Patient Drugs: ' + $scope.drugs);
 
   }

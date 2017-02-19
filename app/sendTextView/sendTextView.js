@@ -11,9 +11,6 @@ angular.module('myApp.addPatientView', ['ngRoute'])
 
 .controller('AddPatientViewCtrl', ['$scope', '$rootScope','$http', 'SERVER_HOST', '$location', function($scope, $rootScope, $http, SERVER_HOST, $location) {
 
-  // Verify login
-  if ($rootScope.doctorInformation == null) $location.path('/loginDoctor');
-
   // Initialize $scope.data
   $scope.data = {};
 
@@ -36,7 +33,6 @@ angular.module('myApp.addPatientView', ['ngRoute'])
 
   // // Form Handler
   $scope.submitForm = function() {
-    console.log($rootScope.doctorInformation);
     // Get patient data
     $rootScope.newPatient = {
       name: $scope.patient.firstName + " " + $scope.patient.lastName,
@@ -46,11 +42,12 @@ angular.module('myApp.addPatientView', ['ngRoute'])
       ssn: $scope.patient.ssn.toString(),
       dob: $scope.patient.birthDate.toString(),
       doctor: $rootScope.doctorInformation.name,
-      id: $rootScope.doctorInformation.id
     }
 
+    // + Add new patient to database
     $http.post(SERVER_HOST+'addPatientView', $rootScope.newPatient).
     then(function (res) {
+      console.log(res);
       // Choose route
       if ($scope.data.cb1 == true) {
         $rootScope.clickedPatient = $rootScope.newPatient;

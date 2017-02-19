@@ -28,6 +28,7 @@
                 <p>DoB</p>
                 <p>Address</p>
                 <p>SSN</p>
+                <p>Current medication</p>
             </md-list-item>
             <md-list-item ng-repeat="patient in doctorPatientInformation | filter:searchPatients" ng-click="goToPtDrugList($index)">
                 <p>{{patient.name}}</p>
@@ -39,7 +40,7 @@
     </div>
 
     <div class="drugs-list" ng-show="drugs">
-        <md-subheader> {{selectedPatient}}'s Prescriptions </md-subheader>
+        <md-subheader> {{selectedPatientName}}'s Prescriptions </md-subheader>
         <md-list>
             <md-list-item style="background-color: #efefef;">
                 <p>Medication Name</p>
