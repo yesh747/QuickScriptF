@@ -28,7 +28,6 @@ angular.module('myApp.loginDoctor', ['ngRoute'])
        $rootScope.doctorInformation = {
          name: res.data.doctor.name,
          email: res.data.doctor.email,
-         dob: res.data.doctor.dob,
          address: res.data.doctor.address,
          practiceName: res.data.doctor.practiceName,
          id: res.data.doctor.id,
@@ -67,6 +66,9 @@ angular.module('myApp.loginDoctor', ['ngRoute'])
 
  }
 
+ $scope.signUp = function(){
+     $window.location.href = "#!/signUpDoctor";
 
+ }
 
 }]);

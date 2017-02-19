@@ -17,7 +17,6 @@ angular.module('myApp.signUpDoctor', ['ngRoute'])
   $scope.newDoctor = {
    name: $scope.doctor.firstName + " " + $scope.doctor.lastName,
    email: $scope.doctor.email,
-   dob: $scope.doctor.dob.toString(),
    address: $scope.doctor.address,
    practiceName: $scope.doctor.practiceName,
    specialty: $scope.doctor.specialty,

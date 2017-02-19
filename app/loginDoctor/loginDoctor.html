@@ -13,11 +13,19 @@
       <label>Password</label>
       <input ng-model="doctor.password" type="password">
     </md-input-container>
-    <md-button ng-click="login()"
-               class="md-primary md-raised"
-               style="color:white;
-               transform: translate(-50%, 0); position: relative; left: 50%; margin: 0;">
-      Login
-    </md-button>
+    <div layout="row" style="transform: translate(-50%, 0);
+         position: absolute;
+         left: 50%">
+      <md-button ng-click="login()"
+                 class="md-primary md-raised"
+                 style="color:white;">
+        Login
+      </md-button>
+      <md-button ng-click="signUp()"
+                 class="md-primary md-raised"
+                 style="color:white;">
+        Sign up
+      </md-button>
+    </div>
   </div>
 </div>

@@ -51,5 +51,13 @@ angular.module('myApp.patientsView', ['ngRoute'])
         )
   };
 
+  $scope.logout = function() {
+
+    $rootScope.doctorInformation = null;
+    $rootScope.doctorPatientInformation = null;
+    $window.location.href = '#!/loginDoctor';
+
+  }
+
 
 }]);

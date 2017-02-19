@@ -44,10 +44,11 @@ angular.module('myApp.addPatientView', ['ngRoute'])
       email: $scope.patient.email,
       phoneNumber: $scope.patient.phone,
       ssn: $scope.patient.ssn.toString(),
-      dob: $scope.patient.birthDate.toString(),
       doctor: $rootScope.doctorInformation.name,
       id: $rootScope.doctorInformation.id
     }
+
+    console.log($rootScope.newPatient);
 
     $http.post(SERVER_HOST+'addPatientView', $rootScope.newPatient).
     then(function (res) {

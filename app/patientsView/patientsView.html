@@ -5,6 +5,10 @@
             <h1 style="">Dr. {{doctor.name}}</h1> <br>
             <h3 style="">{{doctor.practice}}</h3>
         </div>
+        <md-button ng-click="logout()" class="md-primary md-raised" style="color: #ffffff; margin: auto 0; margin-right: 20px; background-color: darkred;" ng-hide="drugs">
+            Logout
+        </md-button>
+
         <md-button href="#!/addPatientView" class="md-primary md-raised" style="color: #ffffff; margin: auto 0;" ng-hide="drugs">
             Add New Patient
         </md-button>
@@ -30,13 +34,11 @@
         <md-list>
             <md-list-item style="background-color: #efefef;">
                 <p>Name</p>
-                <p>DoB</p>
                 <p>Address</p>
                 <p>SSN</p>
             </md-list-item>
             <md-list-item ng-repeat="patient in doctorPatientInformation | filter:searchPatients" ng-click="goToPtDrugList($index)">
                 <p>{{patient.name}}</p>
-                <p>{{patient.dob}}</p>
                 <p>{{patient.address}}</p>
                 <p>{{patient.ssn}}</p>
             </md-list-item>
