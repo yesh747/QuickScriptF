@@ -28,7 +28,6 @@
                 <p>DoB</p>
                 <p>Address</p>
                 <p>SSN</p>
-                <p>Current medication</p>
             </md-list-item>
             <md-list-item ng-repeat="patient in doctorPatientInformation | filter:searchPatients" ng-click="goToPtDrugList($index)">
                 <p>{{patient.name}}</p>
